@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace WpfApp1
 {
@@ -24,5 +25,18 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Run(new Action(aufruf));
+        }
+
+        void aufruf()
+        {
+            Thread.Sleep(2000);
+            this.Dispatcher.Invoke(new Action(() => label_1.Content = "Hallo"));
+            ;
+        }
+
     }
 }
