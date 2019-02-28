@@ -26,23 +26,18 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(new Action(aufruf));
+            button1.IsEnabled = false;
+            await Task.Run(new Action(aufruf));
+            button1.IsEnabled = true;
         }
 
         void aufruf()
         {
-            Enabled(false);
             //Zeitaufwendiger Prozess!!
             Thread.Sleep(2000);
             Dispatcher.Invoke(new Action(() => label_1.Content = "Hallo"));
-            Enabled(true);
-        }
-
-        void Enabled(bool bol)
-        {
-            Dispatcher.Invoke(new Action(() => button1.IsEnabled = bol));
         }
 
     }
