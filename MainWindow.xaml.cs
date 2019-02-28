@@ -29,12 +29,9 @@ namespace WpfApp1
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             button1.IsEnabled = false;
-            await Task.Run(new Action(delegate ()
-            {
-                Thread.Sleep(2000);
-                Dispatcher.Invoke(new Action(delegate () { label_1.Content = "Hallo"; }));
-            }
-                ));
+
+            await Task.Run(new Action(() => { Thread.Sleep(2000); Dispatcher.Invoke(new Action(() => label_1.Content = "Hallo")); }));
+
             button1.IsEnabled = true;
         }
 
