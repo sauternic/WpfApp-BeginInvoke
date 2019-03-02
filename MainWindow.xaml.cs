@@ -33,14 +33,14 @@ namespace WpfApp1
 
         void aufruf()
         {
-            Dispatcher.Invoke(new Action(() => button1.IsEnabled = false));
+            Dispatcher.Invoke(() => button1.IsEnabled = false);
 
             //Zeitaufwendiger Prozess!!
             Thread.Sleep(2000);
 
-            Dispatcher.Invoke(new Action(() => label_1.Content = "Hallo"));
+            Dispatcher.Invoke(() => label_1.Content = "Hallo");
 
-            Dispatcher.Invoke(new Action(() => button1.IsEnabled = true));
+            Dispatcher.Invoke(() => button1.IsEnabled = true);
         }
 
     }
